@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>FM Produções</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,'Segoe UI',sans-serif;background:#0d0d0d;color:#f0f0f0;font-size:14px}
+header{background:#111;border-bottom:1px solid #222;padding:12px 16px;position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:16px;font-weight:700}.logo span{color:#e74c3c}
+.clock{font-size:11px;color:#444}
+nav{display:flex;background:#111;border-bottom:1px solid #1a1a1a;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.nt{flex:none;padding:10px 16px;font-size:12px;font-weight:600;color:#555;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.nt.on{color:#fff;border-bottom-color:#e74c3c}
+main{padding:12px;max-width:700px;margin:0 auto}
+.pg{display:none}.pg.on{display:block}
+.lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#444;margin:14px 0 8px}
+.card{background:#181818;border:1px solid #242424;border-radius:12px;padding:12px;margin-bottom:10px}
+.card.u{border-left:3px solid #e74c3c}
+.card.p{border-left:3px solid #3498db}
+.card.w{border-left:3px solid #f39c12}
+.card.d{border-left:3px solid #27ae60;opacity:.85}
+.row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.ico{font-size:20px;min-width:24px;padding-top:1px}
+.inf{flex:1}
+.ttl{font-size:13px;font-weight:600;margin-bottom:2px}
+.dsc{font-size:11px;color:#666;line-height:1.4}
+.ts{font-size:10px;color:#3a3a3a;margin-top:4px}
+.ts b{color:#555}
+.bx{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap;margin-top:1px}
+.bu{background:#2d0a0a;color:#e74c3c}
+.bp{background:#0a1e2d;color:#3498db}
+.bw{background:#2d1e05;color:#f39c12}
+.bd{background:#0a2016;color:#27ae60}
+.cl{border-top:1px solid #1e1e1e;padding-top:8px;margin:8px 0;display:flex;flex-direction:column;gap:5px}
+.ci{font-size:11px;color:#555;display:flex;align-items:center;gap:6px}
+.ci::before{font-size:12px;min-width:14px}
+.ci.ok{color:#3a3a3a}.ci.ok::before{content:'✓';color:#27ae60}
+.ci.td::before{content:'○';color:#f39c12}
+.ci.ur::before{content:'!';color:#e74c3c;font-weight:700}
+.btns{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.btn{flex:1;min-width:100px;padding:9px 8px;border-radius:8px;border:1px solid #2a2a2a;background:#1a1a1a;color:#aaa;font-size:11px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block}
+.btn.a{background:#e74c3c;color:#fff;border-color:#e74c3c}
+.btn.g{background:#27ae60;color:#fff;border-color:#27ae60}
+.fcard{background:#181818;border:1px solid #242424;border-radius:12px;padding:11px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.fd{min-width:38px;text-align:center}
+.fd .n{font-size:20px;font-weight:700;line-height:1}
+.fd .m{font-size:10px;color:#555;text-transform:uppercase}
+.fd .r{font-size:10px;color:#444}
+.dv{width:1px;background:#222;align-self:stretch}
+.fi{flex:1}
+.fn{font-size:13px;font-weight:600;margin-bottom:2px}
+.fl{font-size:11px;color:#555}
+.fb{font-size:11px;font-weight:600;padding:7px 10px;border-radius:8px;border:1px solid #2a2a2a;background:#1a1a1a;color:#aaa;text-decoration:none;white-space:nowrap;cursor:pointer}
+.fb.h{border-color:#e74c3c;color:#e74c3c}
+.fb.g{border-color:#27ae60;color:#27ae60;background:#0a2016}
+.stats{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+.st{flex:1;min-width:60px;background:#181818;border:1px solid #222;border-radius:10px;padding:9px 6px;text-align:center}
+.st .n{font-size:20px;font-weight:700}
+.st .l{font-size:10px;color:#555;margin-top:1px}
+.loading{text-align:center;padding:40px 20px;color:#444;font-size:13px}
+.err{text-align:center;padding:30px;color:#e74c3c;font-size:12px;line-height:1.6}
+.src-note{text-align:center;font-size:10px;color:#2a2a2a;padding:8px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#27ae60;color:#fff;padding:10px 20px;border-radius:20px;font-size:12px;font-weight:600;z-index:99;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.on{opacity:1}
+footer{text-align:center;padding:20px;font-size:10px;color:#2a2a2a}
+</style>
+</head>
+<body>
+
+<header>
+  <div><div class="logo">FM <span>Produções</span></div></div>
+  <div class="clock" id="clk"></div>
+</header>
+
+<nav>
+  <button class="nt on" onclick="go('urg',this)">🔴 Urgente</button>
+  <button class="nt" onclick="go('dig',this)">💻 Digital</button>
+  <button class="nt" onclick="go('fes',this)">🎸 Festivais</button>
+  <button class="nt" onclick="go('don',this)">✅ Prontos</button>
+</nav>
+
+<main>
+  <div id="urg" class="pg on"><div class="loading">⏳ Carregando...</div></div>
+  <div id="dig" class="pg"><div class="loading">⏳ Carregando...</div></div>
+  <div id="fes" class="pg"><div class="loading">⏳ Carregando...</div></div>
+  <div id="don" class="pg"><div class="loading">⏳ Carregando...</div></div>
+</main>
+
+<div class="toast" id="toast">📋 Prompt copiado! Cole no Claude com Ctrl+V</div>
+<footer>FM Produções · Rio de Janeiro · 🤘</footer>
+
+<script>
+const SID='1VTniqtcCvMZS3VIgEfVRyAEkDbUOTPIzWZsQZmNbt7c';
+
+function go(id,btn){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nt').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+
+function tick(){
+  const d=new Date();
+  document.getElementById('clk').textContent=
+    d.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'})+
+    ' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),3000);
+}
+
+function copyAndOpen(prompt,url){
+  try{navigator.clipboard.writeText(prompt);}catch(e){}
+  window.open(url,'_blank');
+  toast('📋 Prompt copiado! Cole no Claude com Ctrl+V');
+}
+
+function parseCSV(txt){
+  const lines=txt.trim().split('\n');
+  const headers=lines[0].replace(/"/g,'').split(',').map(h=>h.trim());
+  return lines.slice(1).map(line=>{
+    const vals=[];let cur='',inQ=false;
+    for(let c of line){
+      if(c==='"'){inQ=!inQ;}
+      else if(c===','&&!inQ){vals.push(cur);cur='';}
+      else cur+=c;
+    }
+    vals.push(cur);
+    const obj={};
+    headers.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/"/g,'').trim());
+    return obj;
+  }).filter(r=>r.PROJETO&&r.PROJETO.length>0);
+}
+
+function sClass(s){return s==='URGENTE'?'u':s==='PROGRESSO'?'p':s==='AGUARDANDO'?'w':'d';}
+function bClass(s){return s==='URGENTE'?'bu':s==='PROGRESSO'?'bp':s==='AGUARDANDO'?'bw':'bd';}
+function bTxt(s){
+  return s==='URGENTE'?'🔴 Urgente':s==='PROGRESSO'?'🔵 Progresso':
+         s==='AGUARDANDO'?'🟡 Aguardando':s==='CONCLUIDO'?'✅ Concluído':'📅 Planejado';
+}
+function emo(n){
+  const m={'Rock 80':'🤘','Arraial':'🎶','Rocktober':'🍺','QI Kids':'🧠','CodeMinds':'💻',
+    'Dinossauro':'🦖','Event Cash':'💰','Site Oficial':'🌐','Sorteio':'🎰','Morning':'📡',
+    'Loca':'🔊','WhatsApp':'🤖','Parceria':'🤝','Roda Gigante':'🤝','Equipe MKT':'🎸',
+    'PWA':'📱','Ambev':'💼','Arcane':'⚖️','TJ-RJ':'⚖️','Aposentadoria':'💰',
+    'EuroGlobal':'📈','Contabilidade':'📊','Dashboard':'📊'};
+  for(let k in m)if(n.includes(k))return m[k];
+  return '📌';
+}
+
+function card(p){
+  const prox=p.PROXIMA_ACAO?`<div class="cl"><div class="ci td">${p.PROXIMA_ACAO}</div></div>`:'';
+  const b1=p.LINK_CLAUDE?`<a class="btn" href="${p.LINK_CLAUDE}" target="_blank">📂 Abrir</a>`:'';
+  const b2=p.LINK_EXTERNO?`<a class="btn a" href="${p.LINK_EXTERNO}" target="_blank">↗ Acessar</a>`:'';
+  const btns=(b1||b2)?`<div class="btns">${b1}${b2}</div>`:'';
+  return`<div class="card ${sClass(p.STATUS)}">
+    <div class="row">
+      <div class="ico">${emo(p.PROJETO)}</div>
+      <div class="inf">
+        <div class="ttl">${p.PROJETO}</div>
+        <div class="dsc">${p.DESCRICAO||''}</div>
+        ${p.ULTIMA_ACAO?`<div class="ts">🕐 <b>${p.ULTIMA_ACAO}</b></div>`:''}
+      </div>
+      <span class="bx ${bClass(p.STATUS)}">${bTxt(p.STATUS)}</span>
+    </div>
+    ${prox}${btns}
+  </div>`;
+}
+
+function festCard(p){
+  const parts=p.PROJETO.split('·');
+  const nome=parts[0]?.trim()||p.PROJETO;
+  let dia='',mesNome='';
+  const lastPart=parts[parts.length-1]?.trim()||'';
+  const dataMatch=lastPart.match(/(\d{1,2})[\/\-](\w+)/);
+  if(dataMatch){
+    dia=dataMatch[1];
+    const mMap={'jan':'jan','fev':'fev','mar':'mar','abr':'abr','mai':'mai','jun':'jun',
+      'jul':'jul','ago':'ago','set':'set','out':'out','nov':'nov','dez':'dez',
+      '1':'jan','2':'fev','3':'mar','4':'abr','5':'mai','6':'jun',
+      '7':'jul','8':'ago','9':'set','10':'out','11':'nov','12':'dez'};
+    mesNome=mMap[dataMatch[2].toLowerCase().substring(0,3)]||dataMatch[2];
+  }
+  const isHot=p.STATUS==='URGENTE';
+  const prompt='Crie o plano de marketing completo para o '+nome+' em '+p.DESCRICAO+'.\n\nPreciso de:\n1) Copy para Instagram (feed + stories + reels)\n2) Copy para Facebook\n3) Roteiro de video de divulgacao para YouTube e Reels\n4) Hashtags e melhores horarios de postagem\n\nUse linguagem animada, rock e festiva!';
+  const btnLabel=isHot?'⚡ Criar conteúdo':'✏️ Marketing';
+  const btnClass='fb'+(isHot?' h':'');
+  return`<div class="fcard">
+    <div class="fd"><div class="n">${dia||'📅'}</div>${mesNome?`<div class="m">${mesNome}</div>`:''}</div>
+    <div class="dv"></div>
+    <div class="fi"><div class="fn">${emo(nome)} ${nome}</div><div class="fl">📍 ${p.DESCRICAO||''}</div></div>
+    <button class="${btnClass}" onclick="copyAndOpen(${JSON.stringify(prompt)},'https://claude.ai/new')">${btnLabel}</button>
+  </div>`;
+}
+
+async function load(){
+  try{
+    const url=`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=out:csv&t=${Date.now()}`;
+    const res=await fetch(url);
+    const txt=await res.text();
+    const rows=parseCSV(txt);
+    const tots={
+      u:rows.filter(r=>r.STATUS==='URGENTE').length,
+      p:rows.filter(r=>r.STATUS==='PROGRESSO').length,
+      w:rows.filter(r=>r.STATUS==='AGUARDANDO').length,
+      d:rows.filter(r=>r.STATUS==='CONCLUIDO').length
+    };
+    const urgentes=rows.filter(r=>r.STATUS==='URGENTE');
+    const progresso=rows.filter(r=>r.CATEGORIA==='DIGITAL'&&r.STATUS==='PROGRESSO');
+    const aguardando=rows.filter(r=>r.CATEGORIA==='DIGITAL'&&r.STATUS==='AGUARDANDO');
+    const festivais=rows.filter(r=>r.CATEGORIA==='FESTIVAL'&&r.STATUS!=='CONCLUIDO');
+    const infraFest=rows.filter(r=>r.CATEGORIA==='FESTIVAL'&&r.STATUS==='CONCLUIDO');
+    const concluidos=rows.filter(r=>r.STATUS==='CONCLUIDO'&&r.CATEGORIA!=='FESTIVAL');
+
+    document.getElementById('urg').innerHTML=`
+      <div class="stats">
+        <div class="st"><div class="n" style="color:#e74c3c">${tots.u}</div><div class="l">Urgentes</div></div>
+        <div class="st"><div class="n" style="color:#3498db">${tots.p}</div><div class="l">Progresso</div></div>
+        <div class="st"><div class="n" style="color:#f39c12">${tots.w}</div><div class="l">Aguardando</div></div>
+        <div class="st"><div class="n" style="color:#27ae60">${tots.d}</div><div class="l">Prontos</div></div>
+      </div>
+      <div class="lbl">🚨 Ação imediata</div>
+      ${urgentes.length?urgentes.map(card).join(''):'<div class="loading">✅ Nenhuma urgência!</div>'}
+      <div class="src-note">Planilha Google · atualiza a cada 5min</div>`;
+
+    document.getElementById('dig').innerHTML=`
+      ${progresso.length?`<div class="lbl">Em progresso</div>${progresso.map(card).join('')}`:''}
+      ${aguardando.length?`<div class="lbl">Aguardando ação</div>${aguardando.map(card).join('')}`:''}
+      <div class="src-note">Planilha Google · atualiza a cada 5min</div>`;
+
+    document.getElementById('fes').innerHTML=`
+      <div class="lbl">Calendário 2026</div>
+      ${festivais.map(festCard).join('')}
+      ${infraFest.length?`<div class="lbl">Infraestrutura</div>${infraFest.map(card).join('')}`:''}
+      <div class="src-note">Planilha Google · atualiza a cada 5min</div>`;
+
+    document.getElementById('don').innerHTML=`
+      <div class="lbl">Entregáveis concluídos</div>
+      ${concluidos.map(card).join('')}
+      <div class="src-note">Planilha Google · atualiza a cada 5min</div>`;
+
+  }catch(e){
+    ['urg','dig','fes','don'].forEach(id=>{
+      document.getElementById(id).innerHTML=`<div class="err">❌ Erro ao carregar dados.<br><small>${e.message}</small></div>`;
+    });
+  }
+}
+
+tick();
+setInterval(tick,30000);
+load();
+setInterval(load,5*60*1000);
+</script>
+</body>
+</html>
