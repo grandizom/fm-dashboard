@@ -196,7 +196,7 @@ function festCard(p){
     <div class="fd"><div class="n">${dia||'📅'}</div>${mesNome?`<div class="m">${mesNome}</div>`:''}</div>
     <div class="dv"></div>
     <div class="fi"><div class="fn">${emo(nome)} ${nome}</div><div class="fl">📍 ${p.DESCRICAO||''}</div></div>
-    <button class="${btnClass}" onclick="copyAndOpen(${JSON.stringify(prompt)},'https://claude.ai/new')">${btnLabel}</button>
+    <a class="${btnClass}" href="https://claude.ai/new" target="_blank">${btnLabel}</a>
   </div>`;
 }
 
