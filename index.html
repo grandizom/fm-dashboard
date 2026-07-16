@@ -2,525 +2,261 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FM Produções — Hub de Projetos</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>FM Produções</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Segoe UI',sans-serif;background:#0d0d0d;color:#f0f0f0;min-height:100vh}
-.header{background:#111;border-bottom:1px solid #222;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
-.logo{font-size:15px;font-weight:700;color:#fff;letter-spacing:0.5px}
-.logo span{color:#e74c3c}
-.date-now{font-size:11px;color:#555}
-.tabs{display:flex;background:#111;border-bottom:1px solid #1e1e1e;overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{padding:11px 16px;font-size:12px;font-weight:600;border:none;background:transparent;color:#555;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .2s}
-.tab.active{color:#fff;border-bottom-color:#e74c3c}
-.tab:hover:not(.active){color:#aaa}
-.content{padding:14px 12px;max-width:700px;margin:0 auto}
-.section-label{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#444;margin:14px 0 8px}
-.card{background:#161616;border:1px solid #222;border-radius:12px;padding:14px;margin-bottom:10px;transition:border-color .2s}
-.card:hover{border-color:#333}
-.card.urgent{border-left:3px solid #e74c3c}
-.card.progress{border-left:3px solid #3498db}
-.card.waiting{border-left:3px solid #f39c12}
-.card.done{border-left:3px solid #27ae60;opacity:.85}
-.card-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
-.card-icon{font-size:20px;min-width:24px;line-height:1.3}
-.card-info{flex:1}
-.card-title{font-size:13px;font-weight:600;color:#fff;margin-bottom:3px}
-.card-desc{font-size:11px;color:#666;line-height:1.5}
-.last-action{font-size:10px;color:#444;margin-top:5px;line-height:1.4}
-.last-action b{color:#666}
-.badge{font-size:10px;font-weight:600;padding:3px 9px;border-radius:20px;white-space:nowrap}
-.b-urgent{background:#3b1212;color:#e74c3c}
-.b-progress{background:#0d2035;color:#3498db}
-.b-waiting{background:#2d1e05;color:#f39c12}
-.b-done{background:#0d2016;color:#27ae60}
-.b-paused{background:#1a1a1a;color:#555}
-.checklist{border-top:1px solid #1e1e1e;padding-top:10px;margin-bottom:10px;display:flex;flex-direction:column;gap:5px}
-.ci{display:flex;align-items:center;gap:7px;font-size:11px;color:#666}
-.ci.ok{color:#444}
-.ci.ok::before{content:'✓';color:#27ae60;font-weight:700;font-size:12px;min-width:12px}
-.ci.todo::before{content:'○';color:#f39c12;font-size:11px;min-width:12px}
-.ci.urgent-item::before{content:'!';color:#e74c3c;font-weight:700;font-size:12px;min-width:12px}
-.btns{display:flex;gap:7px;flex-wrap:wrap}
-.btn{flex:1;min-width:120px;padding:9px 10px;border-radius:8px;border:none;font-size:11px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:5px;transition:all .15s}
-.btn-open{background:#1a1a1a;color:#aaa;border:1px solid #2a2a2a}
-.btn-open:hover{background:#222;color:#fff;border-color:#444}
-.btn-action{background:#e74c3c;color:#fff}
-.btn-action:hover{background:#c0392b}
-.festival-card{background:#161616;border:1px solid #222;border-radius:12px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
-.fest-date{min-width:44px;text-align:center}
-.fest-day{font-size:22px;font-weight:700;color:#fff;line-height:1}
-.fest-month{font-size:10px;color:#555;text-transform:uppercase}
-.fest-range{font-size:10px;color:#444}
-.divv{width:1px;background:#222;align-self:stretch}
-.fest-info{flex:1}
-.fest-name{font-size:13px;font-weight:600;color:#fff;margin-bottom:2px}
-.fest-local{font-size:11px;color:#555}
-.fest-btn{font-size:11px;font-weight:600;padding:7px 12px;border-radius:8px;border:1px solid #2a2a2a;background:transparent;color:#aaa;cursor:pointer;white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:4px}
-.fest-btn:hover{background:#1a1a1a;color:#fff}
-.fest-btn.hot{border-color:#e74c3c;color:#e74c3c}
-.stats-row{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.stat{background:#161616;border:1px solid #222;border-radius:10px;padding:10px 14px;flex:1;min-width:80px;text-align:center}
-.stat-n{font-size:22px;font-weight:700;color:#fff}
-.stat-l{font-size:10px;color:#555;margin-top:2px}
-.footer{text-align:center;padding:24px 16px;font-size:10px;color:#333}
-a{color:inherit;text-decoration:none}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,'Segoe UI',sans-serif;background:#0d0d0d;color:#f0f0f0;font-size:14px}
+header{background:#111;border-bottom:1px solid #222;padding:12px 16px;position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:16px;font-weight:700}.logo span{color:#e74c3c}
+.clock{font-size:11px;color:#444}
+nav{display:flex;background:#111;border-bottom:1px solid #1a1a1a;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.nt{flex:none;padding:10px 16px;font-size:12px;font-weight:600;color:#555;border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.nt.on{color:#fff;border-bottom-color:#e74c3c}
+main{padding:12px;max-width:700px;margin:0 auto}
+.pg{display:none}.pg.on{display:block}
+.lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#444;margin:14px 0 8px}
+.card{background:#181818;border:1px solid #242424;border-radius:12px;padding:12px;margin-bottom:10px}
+.card.u{border-left:3px solid #e74c3c}
+.card.p{border-left:3px solid #3498db}
+.card.w{border-left:3px solid #f39c12}
+.card.d{border-left:3px solid #27ae60;opacity:.85}
+.row{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.ico{font-size:20px;min-width:24px;padding-top:1px}
+.inf{flex:1}
+.ttl{font-size:13px;font-weight:600;margin-bottom:2px}
+.dsc{font-size:11px;color:#666;line-height:1.4}
+.ts{font-size:10px;color:#3a3a3a;margin-top:4px}
+.ts b{color:#555}
+.bx{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;white-space:nowrap;margin-top:1px}
+.bu{background:#2d0a0a;color:#e74c3c}
+.bp{background:#0a1e2d;color:#3498db}
+.bw{background:#2d1e05;color:#f39c12}
+.bd{background:#0a2016;color:#27ae60}
+.cl{border-top:1px solid #1e1e1e;padding-top:8px;margin:8px 0;display:flex;flex-direction:column;gap:5px}
+.ci{font-size:11px;color:#555;display:flex;align-items:center;gap:6px}
+.ci::before{font-size:12px;min-width:14px}
+.ci.ok{color:#3a3a3a}.ci.ok::before{content:'✓';color:#27ae60}
+.ci.td::before{content:'○';color:#f39c12}
+.ci.ur::before{content:'!';color:#e74c3c;font-weight:700}
+.btns{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.btn{flex:1;min-width:100px;padding:9px 8px;border-radius:8px;border:1px solid #2a2a2a;background:#1a1a1a;color:#aaa;font-size:11px;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;display:block}
+.btn.a{background:#e74c3c;color:#fff;border-color:#e74c3c}
+.btn.g{background:#27ae60;color:#fff;border-color:#27ae60}
+.fcard{background:#181818;border:1px solid #242424;border-radius:12px;padding:11px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.fd{min-width:38px;text-align:center}
+.fd .n{font-size:20px;font-weight:700;line-height:1}
+.fd .m{font-size:10px;color:#555;text-transform:uppercase}
+.fd .r{font-size:10px;color:#444}
+.dv{width:1px;background:#222;align-self:stretch}
+.fi{flex:1}
+.fn{font-size:13px;font-weight:600;margin-bottom:2px}
+.fl{font-size:11px;color:#555}
+.fb{font-size:11px;font-weight:600;padding:7px 10px;border-radius:8px;border:1px solid #2a2a2a;background:#1a1a1a;color:#aaa;text-decoration:none;white-space:nowrap;cursor:pointer}
+.fb.h{border-color:#e74c3c;color:#e74c3c}
+.fb.g{border-color:#27ae60;color:#27ae60;background:#0a2016}
+.stats{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+.st{flex:1;min-width:60px;background:#181818;border:1px solid #222;border-radius:10px;padding:9px 6px;text-align:center}
+.st .n{font-size:20px;font-weight:700}
+.st .l{font-size:10px;color:#555;margin-top:1px}
+.loading{text-align:center;padding:40px 20px;color:#444;font-size:13px}
+.err{text-align:center;padding:30px;color:#e74c3c;font-size:12px;line-height:1.6}
+.src-note{text-align:center;font-size:10px;color:#2a2a2a;padding:8px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#27ae60;color:#fff;padding:10px 20px;border-radius:20px;font-size:12px;font-weight:600;z-index:99;opacity:0;transition:opacity .3s;pointer-events:none}
+.toast.on{opacity:1}
+footer{text-align:center;padding:20px;font-size:10px;color:#2a2a2a}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div>
-    <div class="logo">FM <span>Produções</span></div>
-    <div class="date-now" id="clock"></div>
-  </div>
-  <div style="font-size:11px;color:#333">Hub de Projetos</div>
-</div>
+<header>
+  <div><div class="logo">FM <span>Produções</span></div></div>
+  <div class="clock" id="clk"></div>
+</header>
 
-<div class="tabs">
-  <button class="tab active" onclick="show('urgente',this)">🔴 Urgente</button>
-  <button class="tab" onclick="show('digital',this)">💻 Digital</button>
-  <button class="tab" onclick="show('festivais',this)">🎸 Festivais</button>
-  <button class="tab" onclick="show('concluido',this)">✅ Concluído</button>
-</div>
+<nav>
+  <button class="nt on" onclick="go('urg',this)">🔴 Urgente</button>
+  <button class="nt" onclick="go('dig',this)">💻 Digital</button>
+  <button class="nt" onclick="go('fes',this)">🎸 Festivais</button>
+  <button class="nt" onclick="go('don',this)">✅ Prontos</button>
+</nav>
 
-<!-- ===== ABA URGENTE ===== -->
-<div id="tab-urgente" class="content">
-  <div class="stats-row">
-    <div class="stat"><div class="stat-n" style="color:#e74c3c">3</div><div class="stat-l">Urgentes</div></div>
-    <div class="stat"><div class="stat-n" style="color:#f39c12">4</div><div class="stat-l">Em progresso</div></div>
-    <div class="stat"><div class="stat-n" style="color:#555">3</div><div class="stat-l">Aguardando</div></div>
-    <div class="stat"><div class="stat-n" style="color:#27ae60">10</div><div class="stat-l">Concluídos</div></div>
-  </div>
+<main>
+  <div id="urg" class="pg on"><div class="loading">⏳ Carregando...</div></div>
+  <div id="dig" class="pg"><div class="loading">⏳ Carregando...</div></div>
+  <div id="fes" class="pg"><div class="loading">⏳ Carregando...</div></div>
+  <div id="don" class="pg"><div class="loading">⏳ Carregando...</div></div>
+</main>
 
-  <div class="section-label">🚨 Ação imediata necessária</div>
-
-  <div class="card urgent">
-    <div class="card-top">
-      <div class="card-icon">🤘</div>
-      <div class="card-info">
-        <div class="card-title">Rock 80 Festival · Lagoa · 23/mai</div>
-        <div class="card-desc">⚡ Em 6 dias — janela de conteúdo já aberta!</div>
-        <div class="last-action">🕐 Última ação: <b>hoje, 17/mai/2026</b> — planner criado e lembretes no Calendar</div>
-      </div>
-      <span class="badge b-urgent">6 dias</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-action" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">✏️ Criar conteúdo agora</a>
-    </div>
-  </div>
-
-  <div class="card urgent">
-    <div class="card-top">
-      <div class="card-icon">🧠</div>
-      <div class="card-info">
-        <div class="card-title">QI Kids — Corrigir botão CTA</div>
-        <div class="card-desc">Botão vai pro login em vez do Stripe — mata a venda</div>
-        <div class="last-action">🕐 Última ação: <b>11/mai/2026</b> — diagnóstico completo, Stripe webhook localizado</div>
-      </div>
-      <span class="badge b-urgent">🔴 Crítico</span>
-    </div>
-    <div class="checklist">
-      <div class="ci ok">Landing page completa e aprovada</div>
-      <div class="ci ok">Webhook Stripe → Supabase configurado</div>
-      <div class="ci urgent-item">Corrigir CTA → ir direto pro Stripe</div>
-      <div class="ci todo">Testar fluxo completo de compra</div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/afae2865-48d5-4380-a48c-3ed8b882c9db" target="_blank">📂 Abrir conversa</a>
-      <a class="btn btn-action" href="https://claude.ai/chat/afae2865-48d5-4380-a48c-3ed8b882c9db" target="_blank">🔧 Corrigir no Lovable</a>
-    </div>
-  </div>
-
-  <div class="card urgent">
-    <div class="card-top">
-      <div class="card-icon">💻</div>
-      <div class="card-info">
-        <div class="card-title">CodeMinds — Landing page não publicada</div>
-        <div class="card-desc">Toda estratégia pronta · Falta publicar no Lovable</div>
-        <div class="last-action">🕐 Última ação: <b>24/abr/2026</b> — Master Launch Plan completo entregue</div>
-      </div>
-      <span class="badge b-urgent">🔴 Pronto p/ lançar</span>
-    </div>
-    <div class="checklist">
-      <div class="ci ok">14 emails de sequência prontos</div>
-      <div class="ci ok">5 variações de anúncio Meta Ads</div>
-      <div class="ci ok">Roteiro evento ao vivo (90min)</div>
-      <div class="ci urgent-item">Publicar landing page no Lovable</div>
-      <div class="ci todo">Configurar ManyChat + MailChimp</div>
-      <div class="ci todo">Subir Meta Ads (budget R$5.000)</div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/80da05bb-1725-414b-bd88-a9b4833d10c8" target="_blank">📂 Abrir conversa</a>
-      <a class="btn btn-action" href="https://claude.ai/chat/80da05bb-1725-414b-bd88-a9b4833d10c8" target="_blank">🚀 Lançar agora</a>
-    </div>
-  </div>
-</div>
-
-<!-- ===== ABA DIGITAL ===== -->
-<div id="tab-digital" class="content" style="display:none">
-
-  <div class="section-label">Em progresso</div>
-
-  <div class="card progress">
-    <div class="card-top">
-      <div class="card-icon">🦖</div>
-      <div class="card-info">
-        <div class="card-title">Dinossauros do Rock</div>
-        <div class="card-desc">Banda infantil · YouTube + Instagram · @bandadinossaurosdorock</div>
-        <div class="last-action">🕐 Última ação: <b>30/abr/2026</b> — estratégia completa, 12 letras e 7 copys entregues</div>
-      </div>
-      <span class="badge b-progress">🔵 Ativo</span>
-    </div>
-    <div class="checklist">
-      <div class="ci ok">12 letras de músicas prontas</div>
-      <div class="ci ok">7 copys para criativos</div>
-      <div class="ci ok">Estratégia de crescimento completa</div>
-      <div class="ci todo">9 músicas a gerar no Suno</div>
-      <div class="ci todo">Vídeos no Veo 3 ainda não criados</div>
-      <div class="ci todo">Registro na Biblioteca Nacional</div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/3ce24f04-2116-4a7b-80da-1ffdae69947b" target="_blank">📂 Abrir conversa</a>
-      <a class="btn btn-action" href="https://claude.ai/chat/3ce24f04-2116-4a7b-80da-1ffdae69947b" target="_blank">🎵 Gerar músicas</a>
-    </div>
-  </div>
-
-  <div class="card progress">
-    <div class="card-top">
-      <div class="card-icon">💰</div>
-      <div class="card-info">
-        <div class="card-title">Event Cash — App Financeiro</div>
-        <div class="card-desc">HTML + Firebase · gestão financeira dos festivais</div>
-        <div class="last-action">🕐 Última ação: <b>hoje, 17/mai/2026</b> — app e guia Firebase entregues, aguardando configuração</div>
-      </div>
-      <span class="badge b-progress">🔵 Configurar</span>
-    </div>
-    <div class="checklist">
-      <div class="ci ok">App completo criado e baixado</div>
-      <div class="ci ok">Guia Firebase entregue (7 passos)</div>
-      <div class="ci todo">Criar projeto Firebase + Firestore</div>
-      <div class="ci todo">Colar firebaseConfig no HTML</div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/91ff2aaa-4283-414c-a026-1b873ff80d5d" target="_blank">📂 Abrir conversa</a>
-      <a class="btn btn-action" href="https://claude.ai/chat/91ff2aaa-4283-414c-a026-1b873ff80d5d" target="_blank">⚙️ Configurar Firebase</a>
-    </div>
-  </div>
-
-  <div class="card progress">
-    <div class="card-top">
-      <div class="card-icon">🌐</div>
-      <div class="card-info">
-        <div class="card-title">Site Oficial Rock 80 Festival</div>
-        <div class="card-desc">Fotos, sala de imprensa, agenda, admin · Lovable + Supabase</div>
-        <div class="last-action">🕐 Última ação: <b>17/mai/2026</b> — checklist Supabase e prompt Lovable prontos</div>
-      </div>
-      <span class="badge b-progress">🔵 Em progresso</span>
-    </div>
-    <div class="checklist">
-      <div class="ci ok">Prompt completo para Lovable</div>
-      <div class="ci ok">Checklist Supabase criado</div>
-      <div class="ci todo">Criar projeto no Lovable</div>
-      <div class="ci todo">Configurar Supabase (tabelas + buckets)</div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/96bea8de-5be9-4dcf-a098-759aa430b87b" target="_blank">📂 Supabase</a>
-      <a class="btn btn-open" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">📂 Prompt</a>
-      <a class="btn btn-action" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">🚀 Criar no Lovable</a>
-    </div>
-  </div>
-
-  <div class="section-label">Aguardando ação</div>
-
-  <div class="card waiting">
-    <div class="card-top">
-      <div class="card-icon">🎰</div>
-      <div class="card-info">
-        <div class="card-title">Sorteio no Instagram (SaaS)</div>
-        <div class="card-desc">sorteionoinstagram.com.br · landing page criada</div>
-        <div class="last-action">🕐 Última ação: <b>15/mai/2026</b> — landing page, termos e modelo de negócio prontos</div>
-      </div>
-      <span class="badge b-waiting">🟡 Aguardando</span>
-    </div>
-    <div class="checklist">
-      <div class="ci ok">Landing page + termos criados</div>
-      <div class="ci todo">Registrar domínio no registro.br</div>
-      <div class="ci todo">Publicar no Lovable</div>
-      <div class="ci todo">Cadastrar no Meta for Developers</div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/7b80f131-2c0c-4f74-a0b1-6eea3ba48ba4" target="_blank">📂 Abrir conversa</a>
-    </div>
-  </div>
-
-  <div class="card waiting">
-    <div class="card-top">
-      <div class="card-icon">📡</div>
-      <div class="card-info">
-        <div class="card-title">Morning Briefing Automático</div>
-        <div class="card-desc">Google Apps Script + API Claude · resumo diário no e-mail</div>
-        <div class="last-action">🕐 Última ação: <b>17/mai/2026</b> — script colado, aguardando crédito API (US$5)</div>
-      </div>
-      <span class="badge b-waiting">🟡 Falta crédito API</span>
-    </div>
-    <div class="checklist">
-      <div class="ci ok">Script .gs criado e colado</div>
-      <div class="ci urgent-item">Adicionar créditos Anthropic (mín US$5)</div>
-      <div class="ci todo">Criar API Key + colar no script</div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/741d7c94-25eb-41a5-ac4d-813a6a4ad9bd" target="_blank">📂 Abrir conversa</a>
-      <a class="btn btn-action" href="https://console.anthropic.com" target="_blank">💳 Adicionar créditos</a>
-    </div>
-  </div>
-
-  <div class="card waiting">
-    <div class="card-top">
-      <div class="card-icon">🔊</div>
-      <div class="card-info">
-        <div class="card-title">Landing Page Locação FM Produções</div>
-        <div class="card-desc">Som, luz, palco, bandeiras · @alugueldebandeira · Google Ads</div>
-        <div class="last-action">🕐 Última ação: <b>13/mai/2026</b> — prompt completo com meta tags e tracking Google Ads</div>
-      </div>
-      <span class="badge b-waiting">🟡 Pronto p/ publicar</span>
-    </div>
-    <div class="checklist">
-      <div class="ci ok">Prompt completo + meta tags + tracking</div>
-      <div class="ci todo">Publicar no Lovable</div>
-      <div class="ci todo">Configurar Google Ads + GTM</div>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/1a4ca2f4-c84d-4caa-b381-6a097c8d0000" target="_blank">📂 Abrir conversa</a>
-    </div>
-  </div>
-
-</div>
-
-<!-- ===== ABA FESTIVAIS ===== -->
-<div id="tab-festivais" class="content" style="display:none">
-
-  <div class="section-label">Calendário 2026</div>
-
-  <div class="festival-card">
-    <div class="fest-date"><div class="fest-day">23</div><div class="fest-month">mai</div><div class="fest-range">e 24</div></div>
-    <div class="divv"></div>
-    <div class="fest-info">
-      <div class="fest-name">🤘 Rock 80 Festival</div>
-      <div class="fest-local">📍 Lagoa Rodrigo de Freitas</div>
-    </div>
-    <a class="fest-btn hot" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">⚡ Criar conteúdo</a>
-  </div>
-
-  <div class="festival-card">
-    <div class="fest-date"><div class="fest-day">13</div><div class="fest-month">jun</div><div class="fest-range">e 14</div></div>
-    <div class="divv"></div>
-    <div class="fest-info">
-      <div class="fest-name">🎶 Arraial Rock</div>
-      <div class="fest-local">📍 Aterro do Flamengo</div>
-    </div>
-    <a class="fest-btn" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">✏️ Marketing</a>
-  </div>
-
-  <div class="festival-card">
-    <div class="fest-date"><div class="fest-day">27</div><div class="fest-month">jun</div><div class="fest-range">e 28</div></div>
-    <div class="divv"></div>
-    <div class="fest-info">
-      <div class="fest-name">🎶 Arraial Rock</div>
-      <div class="fest-local">📍 Copacabana / Praça do Lido</div>
-    </div>
-    <a class="fest-btn" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">✏️ Marketing</a>
-  </div>
-
-  <div class="festival-card">
-    <div class="fest-date"><div class="fest-day">04</div><div class="fest-month">jul</div><div class="fest-range">e 05</div></div>
-    <div class="divv"></div>
-    <div class="fest-info">
-      <div class="fest-name">🎶 Arraial Rock</div>
-      <div class="fest-local">📍 Aterro do Flamengo</div>
-    </div>
-    <a class="fest-btn" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">✏️ Marketing</a>
-  </div>
-
-  <div class="festival-card">
-    <div class="fest-date"><div class="fest-day">11</div><div class="fest-month">jul</div><div class="fest-range">e 12</div></div>
-    <div class="divv"></div>
-    <div class="fest-info">
-      <div class="fest-name">🎶 Arraial Rock</div>
-      <div class="fest-local">📍 Quinta da Boa Vista</div>
-    </div>
-    <a class="fest-btn" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">✏️ Marketing</a>
-  </div>
-
-  <div class="festival-card">
-    <div class="fest-date"><div class="fest-day">10</div><div class="fest-month">out</div><div class="fest-range">e 11</div></div>
-    <div class="divv"></div>
-    <div class="fest-info">
-      <div class="fest-name">🍺 Rocktoberfest</div>
-      <div class="fest-local">📍 Quinta da Boa Vista</div>
-    </div>
-    <a class="fest-btn" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">✏️ Marketing</a>
-  </div>
-
-  <div class="festival-card">
-    <div class="fest-date"><div class="fest-day">17</div><div class="fest-month">out</div><div class="fest-range">e 18</div></div>
-    <div class="divv"></div>
-    <div class="fest-info">
-      <div class="fest-name">🍺 Rocktoberfest</div>
-      <div class="fest-local">📍 Tijuca / Praça Saens Peña</div>
-    </div>
-    <a class="fest-btn" href="https://claude.ai/chat/f18e6f20-cd58-46b7-91ba-b3816a097c8d" target="_blank">✏️ Marketing</a>
-  </div>
-
-  <div class="section-label">Infraestrutura</div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">🤖</div>
-      <div class="card-info"><div class="card-title">WhatsApp Business AI Agent</div><div class="card-desc">Configurado com conhecimento evergreen · ativo</div></div>
-      <span class="badge b-done">✅ Ativo</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/b2fd0c18-6fea-43a6-bd45-21fce6baeaad" target="_blank">📂 Ver conversa</a>
-    </div>
-  </div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">🤝</div>
-      <div class="card-info"><div class="card-title">Parceria Roda Gigante Yup Star</div><div class="card-desc">20 eventos 2026 · R$100.000 total · Assinado</div></div>
-      <span class="badge b-done">✅ Ativo</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/9226f5c1-4941-4909-a3c6-2a0c558ba2e6" target="_blank">📂 Ver contrato</a>
-    </div>
-  </div>
-
-  <div class="card waiting">
-    <div class="card-top">
-      <div class="card-icon">📊</div>
-      <div class="card-info"><div class="card-title">Contabilidade · Viriato</div><div class="card-desc">FM Representações + MEI · R$700/mês</div></div>
-      <span class="badge b-waiting">🟡 Incluir MEI antes de assinar</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/44e1b9cd-0a68-442d-bea1-88fc7677e2eb" target="_blank">📂 Ver análise</a>
-    </div>
-  </div>
-
-</div>
-
-<!-- ===== ABA CONCLUÍDO ===== -->
-<div id="tab-concluido" class="content" style="display:none">
-
-  <div class="section-label">Entregáveis prontos — clique para reativar</div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">🎸</div>
-      <div class="card-info"><div class="card-title">Manual da Marca + Equipe MKT Rock 80</div><div class="card-desc">rock80-pipeline.jsx · 6 especialistas IA · calendário semanal</div><div class="last-action">🕐 Última ação: <b>25/abr/2026</b> — pipeline com calendário semanal entregue</div></div>
-      <span class="badge b-done">✅</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/1f4de2ef-d924-4414-a666-03be4868ec8f" target="_blank">📂 Abrir</a>
-    </div>
-  </div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">📱</div>
-      <div class="card-info"><div class="card-title">PWA Rock 80 St. Patrick</div><div class="card-desc">App vendas/despesas para evento · eventcash-firebase.html</div><div class="last-action">🕐 Última ação: <b>12/mai/2026</b> — app entregue e aberto com sucesso no browser</div></div>
-      <span class="badge b-done">✅</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/403fe316-c22c-4da4-a505-fbd12260e277" target="_blank">📂 Abrir</a>
-    </div>
-  </div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">💼</div>
-      <div class="card-info"><div class="card-title">Proposta Ambev / Colorado</div><div class="card-desc">PPTX · Piloto R$60k · Temporada R$250k · Premium R$400k</div><div class="last-action">🕐 Última ação: <b>mar/2026</b> — deck completo entregue</div></div>
-      <span class="badge b-done">✅</span>
-    </div>
-  </div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">⚖️</div>
-      <div class="card-info"><div class="card-title">Notificação extrajudicial Arcane</div><div class="card-desc">Rescisão contratual · CDC Arts. 20, 35, 39, 42</div><div class="last-action">🕐 Última ação: <b>08/abr/2026</b> — notificação DOCX e mensagem para Samantha entregues</div></div>
-      <span class="badge b-done">✅</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/e388393e-86d5-4155-9365-b6c7b659d91b" target="_blank">📂 Abrir</a>
-    </div>
-  </div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">⚖️</div>
-      <div class="card-info"><div class="card-title">Processo TJ-RJ (acidente 1997)</div><div class="card-desc">Estratégia bem de família + prescrição intercorrente</div><div class="last-action">🕐 Última ação: <b>16/mar/2026</b> — documentos DOCX para Defensoria entregues</div></div>
-      <span class="badge b-done">✅</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/aeaf787a-4a91-4675-87df-c05f9247d1c0" target="_blank">📂 Abrir</a>
-    </div>
-  </div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">💰</div>
-      <div class="card-info"><div class="card-title">Plano de aposentadoria</div><div class="card-desc">Meta R$20k/mês passivo · horizonte 5 anos · planilha entregue</div><div class="last-action">🕐 Última ação: <b>01/mai/2026</b> — planilha Excel com 3 cenários entregue</div></div>
-      <span class="badge b-done">✅</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/a1884fd8-2c62-4546-a8af-199d72107a3d" target="_blank">📂 Abrir</a>
-    </div>
-  </div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">🤖</div>
-      <div class="card-info"><div class="card-title">Chatbot Rio Blues Festival</div><div class="card-desc">React JSX com respostas automáticas · WhatsApp Business AI configurado</div><div class="last-action">🕐 Última ação: <b>02/mai/2026</b> — WhatsApp AI agent ativo com base evergreen</div></div>
-      <span class="badge b-done">✅</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/b2fd0c18-6fea-43a6-bd45-21fce6baeaad" target="_blank">📂 Abrir</a>
-    </div>
-  </div>
-
-  <div class="card done">
-    <div class="card-top">
-      <div class="card-icon">📈</div>
-      <div class="card-info"><div class="card-title">Plano EuroGlobal 25K Challenge</div><div class="card-desc">Operacional com micros MNQFUT, MESFUT, MGCFUT, MBTFUT</div><div class="last-action">🕐 Última ação: <b>14/mai/2026</b> — análise de gráficos BlackArrow e orientação de entrada</div></div>
-      <span class="badge b-done">✅</span>
-    </div>
-    <div class="btns">
-      <a class="btn btn-open" href="https://claude.ai/chat/14ca7bb9-649d-4edb-984d-1e12c9dfe5fc" target="_blank">📂 Abrir</a>
-    </div>
-  </div>
-
-</div>
-
-<div class="footer">FM Produções · Rio de Janeiro · 🤘 Rock 80 Festival</div>
+<div class="toast" id="toast">📋 Prompt copiado! Cole no Claude com Ctrl+V</div>
+<footer>FM Produções · Rio de Janeiro · 🤘</footer>
 
 <script>
-function show(id,btn){
-  ['urgente','digital','festivais','concluido'].forEach(t=>{
-    document.getElementById('tab-'+t).style.display='none';
-  });
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+id).style.display='block';
-  btn.classList.add('active');
+const SID='1HjhtXFF42XCULqxC6WmRxo7Wa6bR3mLZvRMVWJRzUQo';
+
+function go(id,btn){
+  document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nt').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
 }
-function updateClock(){
+
+function tick(){
   const d=new Date();
-  const opt={weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'};
-  document.getElementById('clock').textContent=d.toLocaleDateString('pt-BR',opt);
+  document.getElementById('clk').textContent=
+    d.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'})+
+    ' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
 }
-updateClock();
-setInterval(updateClock,30000);
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),3000);
+}
+
+function copyAndOpen(prompt,url){
+  try{navigator.clipboard.writeText(prompt);}catch(e){}
+  window.open(url,'_blank');
+  toast('📋 Prompt copiado! Cole no Claude com Ctrl+V');
+}
+
+function parseCSV(txt){
+  const lines=txt.trim().split('\n');
+  const headers=lines[0].replace(/"/g,'').split(',').map(h=>h.trim());
+  return lines.slice(1).map(line=>{
+    const vals=[];let cur='',inQ=false;
+    for(let c of line){
+      if(c==='"'){inQ=!inQ;}
+      else if(c===','&&!inQ){vals.push(cur);cur='';}
+      else cur+=c;
+    }
+    vals.push(cur);
+    const obj={};
+    headers.forEach((h,i)=>obj[h]=(vals[i]||'').replace(/"/g,'').trim());
+    return obj;
+  }).filter(r=>r.PROJETO&&r.PROJETO.length>0);
+}
+
+function sClass(s){return s==='URGENTE'?'u':s==='PROGRESSO'?'p':s==='AGUARDANDO'?'w':'d';}
+function bClass(s){return s==='URGENTE'?'bu':s==='PROGRESSO'?'bp':s==='AGUARDANDO'?'bw':'bd';}
+function bTxt(s){
+  return s==='URGENTE'?'🔴 Urgente':s==='PROGRESSO'?'🔵 Progresso':
+         s==='AGUARDANDO'?'🟡 Aguardando':s==='CONCLUIDO'?'✅ Concluído':'📅 Planejado';
+}
+function emo(n){
+  const m={'Rock 80':'🤘','Arraial':'🎶','Rocktober':'🍺','QI Kids':'🧠','CodeMinds':'💻',
+    'Dinossauro':'🦖','Event Cash':'💰','Site Oficial':'🌐','Sorteio':'🎰','Morning':'📡',
+    'Loca':'🔊','WhatsApp':'🤖','Parceria':'🤝','Roda Gigante':'🤝','Equipe MKT':'🎸',
+    'PWA':'📱','Ambev':'💼','Arcane':'⚖️','TJ-RJ':'⚖️','Aposentadoria':'💰',
+    'EuroGlobal':'📈','Contabilidade':'📊','Dashboard':'📊'};
+  for(let k in m)if(n.includes(k))return m[k];
+  return '📌';
+}
+
+function card(p){
+  const prox=p.PROXIMA_ACAO?`<div class="cl"><div class="ci td">${p.PROXIMA_ACAO}</div></div>`:'';
+  const b1=p.LINK_CLAUDE?`<a class="btn" href="${p.LINK_CLAUDE}" target="_blank">📂 Abrir</a>`:'';
+  const b2=p.LINK_EXTERNO?`<a class="btn a" href="${p.LINK_EXTERNO}" target="_blank">↗ Acessar</a>`:'';
+  const btns=(b1||b2)?`<div class="btns">${b1}${b2}</div>`:'';
+  return`<div class="card ${sClass(p.STATUS)}">
+    <div class="row">
+      <div class="ico">${emo(p.PROJETO)}</div>
+      <div class="inf">
+        <div class="ttl">${p.PROJETO}</div>
+        <div class="dsc">${p.DESCRICAO||''}</div>
+        ${p.ULTIMA_ACAO?`<div class="ts">🕐 <b>${p.ULTIMA_ACAO}</b></div>`:''}
+      </div>
+      <span class="bx ${bClass(p.STATUS)}">${bTxt(p.STATUS)}</span>
+    </div>
+    ${prox}${btns}
+  </div>`;
+}
+
+function festCard(p){
+  const parts=p.PROJETO.split('·');
+  const nome=parts[0]?.trim()||p.PROJETO;
+  let dia='',mesNome='';
+  const lastPart=parts[parts.length-1]?.trim()||'';
+  const dataMatch=lastPart.match(/(\d{1,2})[\/\-](\w+)/);
+  if(dataMatch){
+    dia=dataMatch[1];
+    const mMap={'jan':'jan','fev':'fev','mar':'mar','abr':'abr','mai':'mai','jun':'jun',
+      'jul':'jul','ago':'ago','set':'set','out':'out','nov':'nov','dez':'dez',
+      '1':'jan','2':'fev','3':'mar','4':'abr','5':'mai','6':'jun',
+      '7':'jul','8':'ago','9':'set','10':'out','11':'nov','12':'dez'};
+    mesNome=mMap[dataMatch[2].toLowerCase().substring(0,3)]||dataMatch[2];
+  }
+  const isHot=p.STATUS==='URGENTE';
+  const prompt='Crie o plano de marketing completo para o '+nome+' em '+p.DESCRICAO+'.\n\nPreciso de:\n1) Copy para Instagram (feed + stories + reels)\n2) Copy para Facebook\n3) Roteiro de video de divulgacao para YouTube e Reels\n4) Hashtags e melhores horarios de postagem\n\nUse linguagem animada, rock e festiva!';
+  const btnLabel=isHot?'⚡ Criar conteúdo':'✏️ Marketing';
+  const btnClass='fb'+(isHot?' h':'');
+  return`<div class="fcard">
+    <div class="fd"><div class="n">${dia||'📅'}</div>${mesNome?`<div class="m">${mesNome}</div>`:''}</div>
+    <div class="dv"></div>
+    <div class="fi"><div class="fn">${emo(nome)} ${nome}</div><div class="fl">📍 ${p.DESCRICAO||''}</div></div>
+    <a class="${btnClass}" href="https://claude.ai/new" target="_blank">${btnLabel}</a>
+  </div>`;
+}
+
+async function load(){
+  try{
+    const url=`https://docs.google.com/spreadsheets/d/${SID}/gviz/tq?tqx=out:csv&t=${Date.now()}`;
+    const res=await fetch(url);
+    const txt=await res.text();
+    const rows=parseCSV(txt);
+    const tots={
+      u:rows.filter(r=>r.STATUS==='URGENTE').length,
+      p:rows.filter(r=>r.STATUS==='PROGRESSO').length,
+      w:rows.filter(r=>r.STATUS==='AGUARDANDO').length,
+      d:rows.filter(r=>r.STATUS==='CONCLUIDO').length
+    };
+    const urgentes=rows.filter(r=>r.STATUS==='URGENTE');
+    const progresso=rows.filter(r=>r.CATEGORIA==='DIGITAL'&&r.STATUS==='PROGRESSO');
+    const aguardando=rows.filter(r=>r.CATEGORIA==='DIGITAL'&&r.STATUS==='AGUARDANDO');
+    const festivais=rows.filter(r=>r.CATEGORIA==='FESTIVAL'&&r.STATUS!=='CONCLUIDO');
+    const infraFest=rows.filter(r=>r.CATEGORIA==='FESTIVAL'&&r.STATUS==='CONCLUIDO');
+    const concluidos=rows.filter(r=>r.STATUS==='CONCLUIDO'&&r.CATEGORIA!=='FESTIVAL');
+
+    document.getElementById('urg').innerHTML=`
+      <div class="stats">
+        <div class="st"><div class="n" style="color:#e74c3c">${tots.u}</div><div class="l">Urgentes</div></div>
+        <div class="st"><div class="n" style="color:#3498db">${tots.p}</div><div class="l">Progresso</div></div>
+        <div class="st"><div class="n" style="color:#f39c12">${tots.w}</div><div class="l">Aguardando</div></div>
+        <div class="st"><div class="n" style="color:#27ae60">${tots.d}</div><div class="l">Prontos</div></div>
+      </div>
+      <div class="lbl">🚨 Ação imediata</div>
+      ${urgentes.length?urgentes.map(card).join(''):'<div class="loading">✅ Nenhuma urgência!</div>'}
+      <div class="src-note">Planilha Google · atualiza a cada 5min</div>`;
+
+    document.getElementById('dig').innerHTML=`
+      ${progresso.length?`<div class="lbl">Em progresso</div>${progresso.map(card).join('')}`:''}
+      ${aguardando.length?`<div class="lbl">Aguardando ação</div>${aguardando.map(card).join('')}`:''}
+      <div class="src-note">Planilha Google · atualiza a cada 5min</div>`;
+
+    document.getElementById('fes').innerHTML=`
+      <div class="lbl">Calendário 2026</div>
+      ${festivais.map(festCard).join('')}
+      ${infraFest.length?`<div class="lbl">Infraestrutura</div>${infraFest.map(card).join('')}`:''}
+      <div class="src-note">Planilha Google · atualiza a cada 5min</div>`;
+
+    document.getElementById('don').innerHTML=`
+      <div class="lbl">Entregáveis concluídos</div>
+      ${concluidos.map(card).join('')}
+      <div class="src-note">Planilha Google · atualiza a cada 5min</div>`;
+
+  }catch(e){
+    ['urg','dig','fes','don'].forEach(id=>{
+      document.getElementById(id).innerHTML=`<div class="err">❌ Erro ao carregar dados.<br><small>${e.message}</small></div>`;
+    });
+  }
+}
+
+tick();
+setInterval(tick,30000);
+load();
+setInterval(load,5*60*1000);
 </script>
 </body>
 </html>
